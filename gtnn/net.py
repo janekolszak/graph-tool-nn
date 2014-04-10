@@ -3,21 +3,25 @@ import numpy as np
 
 
 class Net(object):
-
-    def __init__(self, graph, nInput, nOutput, valueType="long double"):
+    __valueType = "long double"
+    biasProp = None
+    valueProp= None
+    weightProp= None
+    def __init__(self, graph, nInput, nOutput):
         self.g = gt.Graph(graph)
         self.__nInput = nInput
         self.__nOutput = nOutput
-        self.biasProp = self.g.new_vertex_property(valueType)
-        self.valueProp = self.g.new_vertex_property(valueType)
-        self.weightProp = self.g.new_edge_property(valueType)
+        self.biasProp = self.g.new_vertex_property(Net.__valueType)
+        self.valueProp = self.g.new_vertex_property(Net.__valueType)
+        self.weightProp = self.g.new_edge_property(Net.__valueType)
+        self.activation = self.g.new_vertex_property("python::object")
         self.prepare()
 
     def prepare(self):
         """
         Computes ans saves the topological sort of the graph for future use.
         """
-        self.order = gt.topological_sort(self.g)[::-1]
+        self.order = np.array(gt.topological_sort(self.g)[::-1])
 
     def forward(self, inputVals=[]):
         g = self.g
@@ -28,7 +32,7 @@ class Net(object):
         for inpVal, vIdx in zip(inputVals, self.order):
             vp[g.vertex(vIdx)] = inpVal
 
-        for vIdx in self.order:
+        for vIdx in self.order[self.__nInput:]:
             v = g.vertex(vIdx)
 
             inputs = np.array([vp[e.source()] for e in v.in_edges()])
@@ -39,8 +43,10 @@ class Net(object):
 
         return np.array(vp.a[-self.__nOutput:])
 
+
 def forward(net):
     return net.forward()
+
 
 def main():
     g = gt.Graph()
