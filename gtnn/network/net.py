@@ -5,17 +5,28 @@ import numpy as np
 class Net(object):
     __valueType = "long double"
     biasProp = None
-    valueProp= None
-    weightProp= None
-    def __init__(self, graph, nInput, nOutput):
+    valueProp = None
+    weightProp = None
+
+    def __init__(self,  nInput=1, nOutput=1, graph=gt.Graph()):
         self.g = gt.Graph(graph)
         self.__nInput = nInput
         self.__nOutput = nOutput
+        self.properties = dict()
+        #TODO: przerzuc do slownika property
         self.biasProp = self.g.new_vertex_property(Net.__valueType)
         self.valueProp = self.g.new_vertex_property(Net.__valueType)
         self.weightProp = self.g.new_edge_property(Net.__valueType)
         self.activation = self.g.new_vertex_property("python::object")
         self.prepare()
+
+    def addVertexProperty(self, name, typeName):
+        self.properties[name] = self.g.new_vertex_property(typeName)
+        return self.properties[name]
+
+    def addEdgeProperty(self, name, typeName):
+        self.properties[name] = self.g.new_edge_property(typeName)
+        return self.properties[name]
 
     def prepare(self):
         """
@@ -39,30 +50,6 @@ class Net(object):
             weights = np.array([wp[e] for e in v.in_edges()])
 
             vp[v] = np.sum(inputs * weights) + bp[v]
-            print(vp[v])
+            
 
         return np.array(vp.a[-self.__nOutput:])
-
-
-def forward(net):
-    return net.forward()
-
-
-def main():
-    g = gt.Graph()
-    g.add_vertex(4)
-    g.add_edge(g.vertex(0), g.vertex(1))
-    g.add_edge(g.vertex(0), g.vertex(2))
-    g.add_edge(g.vertex(1), g.vertex(3))
-    g.add_edge(g.vertex(2), g.vertex(3))
-    g.add_vertex(1)
-    g.add_edge(g.vertex(4), g.vertex(0))
-    n = Net(g, 1, 1)
-    n.prepare()
-    # gt.graph_draw(g)
-    # print(n.order)
-    n.forward([34])
-    forward(n)
-
-if __name__ == "__main__":
-    main()
