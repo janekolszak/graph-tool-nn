@@ -10,4 +10,4 @@ researching neural networks nice&easy. You can create custom nets, train, analyz
 
 
 ### Status
-GTNN is still under heavy development in pre-alpha stage.
+GTNN is still under heavy development in pre-alpha stage... yeah unfinished.:)
