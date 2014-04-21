@@ -11,10 +11,13 @@ class BackpropagationNet(object):
         self.errorProp = net.addVertexProperty("errorProp", "long double")
 
     def prepare(self):
-        self.net.prepare()
+        return self.net.prepare()
 
-    def forward(self, inptut):
-        self.net.forward(input)
+    def forward(self, input):
+        return self.net.forward(input)
+
+    def __str__(self):
+        return str(self.net)
 
     def backward(self, outputErr=[]):
         g = self.net.g
@@ -24,12 +27,13 @@ class BackpropagationNet(object):
         activation = self.net.activation
 
         for outErr, vIdx in zip(outputErr,
-                                self.net.order[-self.net.nOutput:]):
+                                reversed(self.net.order[-self.net.nOutput:])):
             ep[g.vertex(vIdx)] = outErr
 
-        for vIdx in reversed(self.net.order):
+        for vIdx in reversed(self.net.order[:-self.net.nOutput]):
             v = g.vertex(vIdx)
 
             errors = np.array([ep[e.target()] for e in v.out_edges()])
             weights = np.array([wp[e] for e in v.out_edges()])
             ep[v] = np.sum(errors * weights)*activation[v].derivative(sm[v])
+

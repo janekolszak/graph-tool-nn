@@ -30,6 +30,6 @@ def multilayer_perceptron(sizes=[1, 1],
 
         lastLayer = list(presentLayer)
         presentLayer = list()
-        
+
     n.prepare()
     return n

@@ -2,6 +2,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+class Identity(object):
+
+    def value(self, x):
+        return x
+
+    def derivative(self, x):
+        return 1.0
+
+
 class LogSigmoid(object):
 
     def __init__(self, outMin, outMax):
@@ -18,15 +27,14 @@ class LogSigmoid(object):
 
 
 def main():
-    l = LogSigmoid(-1,0)
-    xx = np.linspace(-10,10,100)
+    l = LogSigmoid(-1, 10)
+    xx = np.linspace(-10, 10, 100)
     yy = [l.value(x) for x in xx]
     dd = [l.derivative(x) for x in xx]
-    plt.plot(xx,yy)
-    plt.plot(xx,dd)
+    plt.plot(xx, yy)
+    plt.plot(xx, dd)
     plt.show()
+
 
 if __name__ == "__main__":
     main()
-
-
