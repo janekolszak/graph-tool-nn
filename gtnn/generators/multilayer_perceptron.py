@@ -8,7 +8,7 @@ from gtnn.network.net import Net
 def multilayer_perceptron(sizes=[1, 1],
                           weightGenerator=np.random.random,
                           biasGenerator=np.random.random,
-                          activationFunction=LogSigmoid(-1, -1)):
+                          activationFunction=LogSigmoid(1, -1)):
 
     n = Net(sizes[0], sizes[-1])
     layerId = n.addVertexProperty("layerId", "short")
