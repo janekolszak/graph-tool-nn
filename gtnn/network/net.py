@@ -6,22 +6,17 @@ from gtnn.network.activation import LogSigmoid
 
 class Net(object):
     __valueType = "long double"
-    biasProp = None
-    valueProp = None
-    weightProp = None
 
     def __init__(self,  nInput=1, nOutput=1, graph=gt.Graph()):
         self.g = gt.Graph(graph)
         self.nInput = nInput
         self.nOutput = nOutput
         self.properties = dict()
-        # TODO: przerzuc do slownika property
-        self.biasProp = self.addVertexProperty("biasProp", Net.__valueType)
-        self.valueProp = self.addVertexProperty("valueProp", Net.__valueType)
-        self.sumProp = self.addVertexProperty("sumProp", Net.__valueType)
-        self.weightProp = self.addEdgeProperty("weightProp", Net.__valueType)
-        self.activation = self.addVertexProperty(
-            "activation", "python::object")
+        self.biasProp = self.addVertexProperty("bias", Net.__valueType)
+        self.valueProp = self.addVertexProperty("value", Net.__valueType)
+        self.sumProp = self.addVertexProperty("sum", Net.__valueType)
+        self.activation = self.addVertexProperty("activation", "python::object")
+        self.weightProp = self.addEdgeProperty("weight", Net.__valueType)
         for v in self.g.vertices():
             self.activation[v] = LogSigmoid(-1, 1)
         self.prepare()
@@ -39,7 +34,6 @@ class Net(object):
         Computes ans saves the topological sort of the graph for future use.
         """
         self.order = np.array(gt.topological_sort(self.g)[::-1])
-        # print("ORDER", str(self.order))
 
     def forward(self, inputVals=[]):
         g = self.g

@@ -60,8 +60,6 @@ class TestNet(unittest.TestCase):
             n.activation[v] = Identity()
 
         # All weights and bias == 0
-        print(str(n.forward([1.0])))
-
         assert_allclose(n.forward([1.0]), [0.0, 0.0])
 
         # Init weights

@@ -1,5 +1,5 @@
 Graph-tool Neural Networks
-====
+==========================
 
 Graph-tool is a great open source tool for creating, using and analyzing graphs. It's a python
 library with C++ bindings, uses boost::graph under the hood and seems to be pretty fast
