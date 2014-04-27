@@ -1,15 +1,6 @@
 import numpy as np
 
 
-def __learn(net, learningRate):
-    for e in net.g.edges():
-        net.weightProp[e] += net.valueProp[e.target()] * \
-            learningRate * net.errorProp[e.target()]
-
-    for v in net.g.vertices():
-        net.biasProp[v] += learningRate * net.errorProp[v]
-
-
 def train(net, inputs, outputs, numEpochs=100, learningRate=0.1):
     inputs = np.array(inputs)
     outputs = np.array(outputs)
@@ -20,7 +11,17 @@ def train(net, inputs, outputs, numEpochs=100, learningRate=0.1):
             netOut = net.forward(inp)
             err = netOut - out
             net.backward(err)
-            __learn(net, learningRate)
+
+            # Weights learning:
+            for e in net.g.edges():
+                net.weightProp[e] += net.valueProp[e.target()] * \
+                    learningRate * net.errorProp[e.target()]
+
+            # Bias learning
+            for v in net.g.vertices():
+                net.biasProp[v] += learningRate * net.errorProp[v]
+
+        # End condition
         epochIdx += 1
         if epochIdx > numEpochs:
             break

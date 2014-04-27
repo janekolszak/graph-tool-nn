@@ -27,5 +27,3 @@ class TestSimple(unittest.TestCase):
               numEpochs=100, learningRate=0.8)
         print(n.forward([1]))
         assert_allclose([n.forward(i) for i in inp], out)
-
-

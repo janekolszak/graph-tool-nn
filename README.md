@@ -8,6 +8,3 @@ library with C++ bindings, uses boost::graph under the hood and seems to be pret
 Graph-tool Neural Networks (gtnn) is an implementation of ANN on top of graph-tool. It makes
 researching neural networks nice&easy. You can create custom nets, train, analyze and plot them.
 
-
-### Status
-GTNN is still under heavy development in pre-alpha stage... yeah unfinished.:)
