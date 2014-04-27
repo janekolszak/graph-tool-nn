@@ -2,7 +2,6 @@ import unittest
 from numpy.testing import assert_allclose
 
 from gtnn.generators.multilayer_perceptron import *
-from gtnn.learn.backpropagation import BackpropagationNet
 from gtnn.network.activation import Identity
 
 
@@ -17,7 +16,6 @@ class TestMultilayerPerceptron(unittest.TestCase):
                                   weightGenerator=lambda: 1,
                                   biasGenerator=lambda: 0,
                                   activationFunction=Identity())
-        n = BackpropagationNet(n)
         assert_allclose(n.forward([0]), [0])
         assert_allclose(n.forward([10]), [10])
         assert_allclose(n.forward([-11]), [-11])
