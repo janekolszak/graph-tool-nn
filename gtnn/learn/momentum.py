@@ -9,7 +9,7 @@ def train(net, inputs, outputs, numEpochs=100, learningRate=0.1, momentum=0.6):
                                                "long double")
 
     prevBiasChangeProp = net.addVertexProperty("previous bias change",
-                                             "long double")
+                                               "long double")
     epochIdx = 0
     while True:
         for inp, out in zip(inputs, outputs):
@@ -19,15 +19,15 @@ def train(net, inputs, outputs, numEpochs=100, learningRate=0.1, momentum=0.6):
 
             # Weights learning:
             for e in net.g.edges():
-                prevWeightChangeProp[e] = net.valueProp[e.target()] * \
-                    learningRate * net.errorProp[e.target()] + \
+                prevWeightChangeProp[e] = -net.valueProp[e.target()] * \
+                    learningRate * net.errorProp[e.target()] - \
                     prevWeightChangeProp[e] * momentum
 
                 net.weightProp[e] += prevWeightChangeProp[e]
 
             # Bias learning
             for v in net.g.vertices():
-                prevBiasChangeProp[v] = learningRate * net.errorProp[v] + \
+                prevBiasChangeProp[v] = -learningRate * net.errorProp[v] - \
                     momentum * prevBiasChangeProp[v]
 
                 net.biasProp[v] += prevBiasChangeProp[v]

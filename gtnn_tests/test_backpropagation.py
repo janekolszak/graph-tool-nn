@@ -4,6 +4,7 @@ import graph_tool.all as gt
 
 from gtnn.network.net import Net
 from gtnn.network.activation import Identity
+from gtnn.network.activation import LogSigmoid
 
 
 class TestBackpropagation(unittest.TestCase):
@@ -20,6 +21,8 @@ class TestBackpropagation(unittest.TestCase):
         n = Net(1, 1, g)
         for e in g.edges():
             n.weightProp[e] = 1
+        for v in g.vertices():
+            n.activation[v] = LogSigmoid(-1, 1)
         n.prepare()
         n.backward([1])
         n.forward([1])
@@ -99,7 +102,7 @@ class TestBackpropagation(unittest.TestCase):
         assert_allclose(n.errorProp.a, [0, 0, 0])
 
         n.backward([-10, -8])
-        assert_allclose(n.errorProp.a, [-18, -10, -8])
+        assert_allclose(n.errorProp.a, [-18, -8, -10])
 
         n.backward([3, 57])
-        assert_allclose(n.errorProp.a, [60, 3, 57])
+        assert_allclose(n.errorProp.a, [60, 57, 3])

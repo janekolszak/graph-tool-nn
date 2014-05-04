@@ -27,7 +27,7 @@ class LogSigmoid(object):
 
 
 def main():
-    l = LogSigmoid(-1, 10)
+    l = LogSigmoid(-10, 10)
     xx = np.linspace(-10, 10, 100)
     yy = [l.value(x) for x in xx]
     dd = [l.derivative(x) for x in xx]

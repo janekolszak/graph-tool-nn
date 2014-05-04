@@ -1,13 +1,13 @@
 import graph_tool.all as gt
 import numpy as np
 
-from gtnn.network.activation import LogSigmoid
+from gtnn.network.activation import LogSigmoid, Identity
 
 
 class Net(object):
     __valueType = "long double"
 
-    def __init__(self,  nInput=1, nOutput=1, graph=gt.Graph()):
+    def __init__(self,  nInput, nOutput, graph=gt.Graph()):
         self.g = gt.Graph(graph)
         self.nInput = nInput
         self.nOutput = nOutput
@@ -15,12 +15,12 @@ class Net(object):
         self.biasProp = self.addVertexProperty("bias", Net.__valueType)
         self.valueProp = self.addVertexProperty("value", Net.__valueType)
         self.sumProp = self.addVertexProperty("sum", Net.__valueType)
-        self.activation = self.addVertexProperty("activation", "python::object")
-        self.errorProp = self.addVertexProperty("errorProp", "long double")
+        self.activation = self.addVertexProperty(
+            "activation", "python::object")
+        self.errorProp = self.addVertexProperty("errorProp", Net.__valueType)
 
         self.weightProp = self.addEdgeProperty("weight", Net.__valueType)
-        for v in self.g.vertices():
-            self.activation[v] = LogSigmoid(-1, 1)
+
         self.prepare()
 
     def addVertexProperty(self, name, typeName):
@@ -36,6 +36,8 @@ class Net(object):
         Computes ans saves the topological sort of the graph for future use.
         """
         self.order = np.array(gt.topological_sort(self.g)[::-1])
+        for vIdx in self.order[:self.nInput]:
+            self.activation[self.g.vertex(vIdx)] = Identity()
 
     def forward(self, inputVals=[]):
         g = self.g
@@ -45,7 +47,7 @@ class Net(object):
         sm = self.sumProp
         activation = self.activation
 
-        for inpVal, vIdx in zip(inputVals, self.order):
+        for inpVal, vIdx in zip(inputVals, self.order[:self.nInput]):
             vp[g.vertex(vIdx)] = inpVal
 
         for vIdx in self.order[self.nInput:]:
@@ -57,26 +59,30 @@ class Net(object):
             sm[v] = sum
             vp[v] = activation[v].value(sum)
 
-        return np.array(vp.a[-self.nOutput:])
+        return np.array([vp[g.vertex(vIdx)] for vIdx in self.order[-self.nOutput:]])
+        # print(np.array([vp[g.vertex(vIdx)] for vIdx in self.order[-self.nOutput:]]))
+        # print(np.array(vp.a[-self.nOutput:]))
+        # return np.array(vp.a[-self.nOutput:])
 
     def backward(self, outputErr=[]):
         g = self.g
         ep = self.errorProp
         wp = self.weightProp
         sm = self.sumProp
+
         activation = self.activation
 
         for outErr, vIdx in zip(outputErr,
-                                reversed(self.order[-self.nOutput:])):
-            ep[g.vertex(vIdx)] = outErr
+                                self.order[-self.nOutput:]):
+            v = g.vertex(vIdx)
+            ep[v] = outErr * activation[v].derivative(sm[v])
 
+        # for vIdx in reversed(self.order[self.nInput:-self.nOutput]):
         for vIdx in reversed(self.order[:-self.nOutput]):
             v = g.vertex(vIdx)
-
             errors = np.array([ep[e.target()] for e in v.out_edges()])
             weights = np.array([wp[e] for e in v.out_edges()])
-            ep[v] = np.sum(errors * weights)*activation[v].derivative(sm[v])
-
+            ep[v] = np.sum(errors * weights) * activation[v].derivative(sm[v])
 
     def __str__(self):
         ret = "Net: |V|=" + str(self.g.num_vertices())
