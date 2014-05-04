@@ -14,7 +14,6 @@ def train(net, inputs, outputs, numEpochs=100, learningRate=0.1):
 
             # Weights learning:
             for e in net.g.edges():
-                # print(e, net.valueProp[e.source()], net.errorProp[e.target()])
                 net.weightProp[e] -= net.valueProp[e.source()] * \
                     learningRate * net.errorProp[e.target()]
 

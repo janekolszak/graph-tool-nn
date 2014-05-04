@@ -42,11 +42,11 @@ class TestMomentum(unittest.TestCase):
 
         n = multilayer_perceptron(sizes=[2, 2, 1],
                                   weightGenerator=np.random.random,
-                                  biasGenerator= lambda: np.random.random()-0.5,
+                                  biasGenerator= lambda: np.random.random(),
                                   activationFunction=LogSigmoid(0, 1))
         print(n)
         train(net=n, inputs=inp, outputs=out,
-              numEpochs=10000, learningRate=0.3, momentum=0.8)
+              numEpochs=1000, learningRate=0.3, momentum=0.8)
         print(n)
 
         assert_allclose([n.forward(i) for i in inp], out, atol=0.1)
