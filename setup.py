@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='graph-tool-nn',
-    version='0.0.1',
+    version='1.0.0',
     packages=['gtnn', 'gtnn.generators', 'gtnn.learn', 'gtnn.network'],
     license='GNU General Public License v3 (GPLv3)',
     long_description=open('README.md').read(),
