@@ -14,8 +14,9 @@ Installation
 pip install graph-tool-nn
 ````
 
-Usage
-=====
+Example
+=======
+XOR function implementation - multilayer perceptron trained with momentum:
 ````python
 from numpy.testing import assert_allclose
 import numpy as np
