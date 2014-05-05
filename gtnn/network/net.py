@@ -59,10 +59,9 @@ class Net(object):
             sm[v] = sum
             vp[v] = activation[v].value(sum)
 
-        return np.array([vp[g.vertex(vIdx)] for vIdx in self.order[-self.nOutput:]])
-        # print(np.array([vp[g.vertex(vIdx)] for vIdx in self.order[-self.nOutput:]]))
-        # print(np.array(vp.a[-self.nOutput:]))
-        # return np.array(vp.a[-self.nOutput:])
+        return np.array(
+            [vp[g.vertex(vIdx)] for vIdx in self.order[-self.nOutput:]]
+        )
 
     def backward(self, outputErr=[]):
         g = self.g
@@ -77,7 +76,7 @@ class Net(object):
             v = g.vertex(vIdx)
             ep[v] = outErr * activation[v].derivative(sm[v])
 
-        # for vIdx in reversed(self.order[self.nInput:-self.nOutput]):
+        # TODO: Change the borders
         for vIdx in reversed(self.order[:-self.nOutput]):
             v = g.vertex(vIdx)
             errors = np.array([ep[e.target()] for e in v.out_edges()])
@@ -85,6 +84,7 @@ class Net(object):
             ep[v] = np.sum(errors * weights) * activation[v].derivative(sm[v])
 
     def __str__(self):
+        # TODO: Change output format
         ret = "Net: |V|=" + str(self.g.num_vertices())
         ret += " |E|=" + str(self.g.num_edges()) + "\n"
 

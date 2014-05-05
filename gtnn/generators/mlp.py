@@ -1,15 +1,36 @@
 import numpy as np
-import graph_tool.all as gt
 
 from gtnn.network.activation import LogSigmoid
 from gtnn.network.net import Net
 
 
-def multilayer_perceptron(sizes,
-                          weightGenerator=np.random.random,
-                          biasGenerator=np.random.random,
-                          activationFunction=LogSigmoid(-1, 1)):
+def mlp(sizes,
+        weightGenerator=np.random.random,
+        biasGenerator=np.random.random,
+        activationFunction=LogSigmoid(-1, 1)):
+    r"""Geneerate Multilayer Perceptron (MLP) and return as a Net
 
+    Parameters
+    ----------
+    sizes : list of integers
+        Size of each layer
+    weightGenerator : functor
+        Functor for generating weights
+    biasGenerator : functor
+        Functor for generating bias values
+    activationFunction : activation function
+        Activation function - the same for all neurons
+
+    Returns
+    -------
+    net : :class:`~gtnn.network.Net`
+        Net object with the requested architecture
+
+    Notes
+    -----
+    Creates MLP
+
+    """
     n = Net(sizes[0], sizes[-1])
     layerId = n.addVertexProperty("layerId", "short")
     lastLayer = []
@@ -20,7 +41,6 @@ def multilayer_perceptron(sizes,
         for i in range(size):
             v = n.g.add_vertex()
             layerId[v] = layerIdx
-            # n.valueProp[v] = 0.0
             n.activation[v] = activationFunction
             n.biasProp[v] = biasGenerator()
 
@@ -31,9 +51,6 @@ def multilayer_perceptron(sizes,
 
         lastLayer = list(presentLayer)
         presentLayer = list()
-
-    # Fill specific stuff for hidden and output layers
-    # for v in n.g.vertices():
 
     n.prepare()
     return n

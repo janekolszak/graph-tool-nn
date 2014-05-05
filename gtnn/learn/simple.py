@@ -9,7 +9,7 @@ def train(net, inputs, outputs, numEpochs=100, learningRate=0.1):
     while True:
         for inp, out in zip(inputs, outputs):
             netOut = net.forward(inp)
-            err =  netOut - out
+            err = netOut - out
             net.backward(err)
 
             # Weights learning:
@@ -20,8 +20,6 @@ def train(net, inputs, outputs, numEpochs=100, learningRate=0.1):
             # Bias learning
             for v in net.g.vertices():
                 net.biasProp[v] -= learningRate * net.errorProp[v]
-
-        # print(net.errorProp.a)
 
         # End condition
         epochIdx += 1
