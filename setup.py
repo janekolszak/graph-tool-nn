@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='graph-tool-nn',
-    version='1.0.1',
+    version='1.0.2',
     packages=['gtnn', 'gtnn.generators', 'gtnn.learn', 'gtnn.network'],
     license='GNU General Public License v3 (GPLv3)',
     long_description=r'''Graph-tool is a great open source tool for creating, using and analyzing graphs. It's a python
@@ -11,6 +11,7 @@ library with C++ bindings, uses boost::graph under the hood and seems to be pret
 
 Graph-tool Neural Networks (gtnn) is an implementation of ANN on top of graph-tool. It makes
 researching neural networks nice&easy. You can create custom nets, train, analyze and plot them.
+
 ''',
 
     author="Jan Olszak",
