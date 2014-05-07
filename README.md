@@ -10,7 +10,11 @@ researching neural networks nice&easy. You can create custom nets, train, analyz
 
 Installation
 ============
-Install dependencies: *graph-tool, numpy* and then run: 
+Install dependencies: 
+* graph-tool
+* numpy
+
+and then run: 
 ````bash
 pip install graph-tool-nn
 ````
