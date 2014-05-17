@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>gtnn.network package &mdash; Graph Tool Neural Networks 1.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Graph Tool Neural Networks 1.0.2 documentation" href="index.html" />
+    <link rel="up" title="gtnn package" href="gtnn.html" />
+    <link rel="prev" title="gtnn.learn package" href="gtnn.learn.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gtnn.learn.html" title="gtnn.learn package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Graph Tool Neural Networks 1.0.2 documentation</a> &raquo;</li>
+          <li><a href="gtnn.html" accesskey="U">gtnn package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="gtnn-network-package">
+<h1>gtnn.network package<a class="headerlink" href="#gtnn-network-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-gtnn.network.activation">
+<span id="gtnn-network-activation-module"></span><h2>gtnn.network.activation module<a class="headerlink" href="#module-gtnn.network.activation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gtnn.network.activation.Identity">
+<em class="property">class </em><tt class="descclassname">gtnn.network.activation.</tt><tt class="descname">Identity</tt><a class="reference internal" href="_modules/gtnn/network/activation.html#Identity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.activation.Identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="gtnn.network.activation.Identity.derivative">
+<tt class="descname">derivative</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/gtnn/network/activation.html#Identity.derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.activation.Identity.derivative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gtnn.network.activation.Identity.value">
+<tt class="descname">value</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/gtnn/network/activation.html#Identity.value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.activation.Identity.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gtnn.network.activation.LogSigmoid">
+<em class="property">class </em><tt class="descclassname">gtnn.network.activation.</tt><tt class="descname">LogSigmoid</tt><big>(</big><em>outMin</em>, <em>outMax</em><big>)</big><a class="reference internal" href="_modules/gtnn/network/activation.html#LogSigmoid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.activation.LogSigmoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="gtnn.network.activation.LogSigmoid.derivative">
+<tt class="descname">derivative</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/gtnn/network/activation.html#LogSigmoid.derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.activation.LogSigmoid.derivative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gtnn.network.activation.LogSigmoid.value">
+<tt class="descname">value</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/gtnn/network/activation.html#LogSigmoid.value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.activation.LogSigmoid.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="gtnn.network.activation.main">
+<tt class="descclassname">gtnn.network.activation.</tt><tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/gtnn/network/activation.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.activation.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-gtnn.network.net">
+<span id="gtnn-network-net-module"></span><h2>gtnn.network.net module<a class="headerlink" href="#module-gtnn.network.net" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gtnn.network.net.Net">
+<em class="property">class </em><tt class="descclassname">gtnn.network.net.</tt><tt class="descname">Net</tt><big>(</big><em>nInput</em>, <em>nOutput</em>, <em>graph=&lt;Graph object</em>, <em>directed</em>, <em>with 0 vertices and 0 edges at 0x2b1f9fb97d50&gt;</em><big>)</big><a class="reference internal" href="_modules/gtnn/network/net.html#Net"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.net.Net" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="gtnn.network.net.Net.addEdgeProperty">
+<tt class="descname">addEdgeProperty</tt><big>(</big><em>name</em>, <em>typeName</em><big>)</big><a class="reference internal" href="_modules/gtnn/network/net.html#Net.addEdgeProperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.net.Net.addEdgeProperty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gtnn.network.net.Net.addVertexProperty">
+<tt class="descname">addVertexProperty</tt><big>(</big><em>name</em>, <em>typeName</em><big>)</big><a class="reference internal" href="_modules/gtnn/network/net.html#Net.addVertexProperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.net.Net.addVertexProperty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gtnn.network.net.Net.backward">
+<tt class="descname">backward</tt><big>(</big><em>outputErr=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="reference internal" href="_modules/gtnn/network/net.html#Net.backward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.net.Net.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gtnn.network.net.Net.forward">
+<tt class="descname">forward</tt><big>(</big><em>inputVals=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="reference internal" href="_modules/gtnn/network/net.html#Net.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.net.Net.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gtnn.network.net.Net.prepare">
+<tt class="descname">prepare</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/gtnn/network/net.html#Net.prepare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gtnn.network.net.Net.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes ans saves the topological sort of the graph for future use.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gtnn.network">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gtnn.network" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">gtnn.network package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-gtnn.network.activation">gtnn.network.activation module</a></li>
+<li><a class="reference internal" href="#module-gtnn.network.net">gtnn.network.net module</a></li>
+<li><a class="reference internal" href="#module-gtnn.network">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="gtnn.html">gtnn package</a><ul>
+      <li>Previous: <a href="gtnn.learn.html" title="previous chapter">gtnn.learn package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/gtnn.network.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2014, Jan Olszak.
+    </div>
+  </body>
+</html>
