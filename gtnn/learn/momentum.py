@@ -1,5 +1,6 @@
 import numpy as np
 
+# TODO: Rename and implement online, batch, miniBatch, softmax
 
 def train(net, inputs, outputs, numEpochs=100, learningRate=0.1, momentum=0.6):
     inputs = np.array(inputs)

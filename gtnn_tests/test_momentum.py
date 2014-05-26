@@ -5,6 +5,7 @@ import numpy as np
 from gtnn.generators.mlp import mlp
 from gtnn.learn.momentum import train
 from gtnn.network.activation import LogSigmoid
+from graph_tool.all import *
 
 
 class TestMomentum(unittest.TestCase):
@@ -46,5 +47,8 @@ class TestMomentum(unittest.TestCase):
 
         train(net=n, inputs=inp, outputs=out,
               numEpochs=1000, learningRate=0.3, momentum=0.8)
+
+        pos = radial_tree_layout(n.g, n.g.vertex(0))
+        graph_draw(n.g, pos =pos, vertex_text=n.g.vertex_index, vertex_font_size=18, output_size=(200, 200))
 
         assert_allclose([n.forward(i) for i in inp], out, atol=0.1)
