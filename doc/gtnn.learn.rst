@@ -1,19 +1,16 @@
-gtnn.learn package
-==================
+gtnn.learn
+==========
 
-Submodules
-----------
-
-gtnn.learn.momentum module
---------------------------
+gtnn.learn.momentum
+-------------------
 
 .. automodule:: gtnn.learn.momentum
     :members:
     :undoc-members:
     :show-inheritance:
 
-gtnn.learn.simple module
-------------------------
+gtnn.learn.simple
+-----------------
 
 .. automodule:: gtnn.learn.simple
     :members:
@@ -21,10 +18,10 @@ gtnn.learn.simple module
     :show-inheritance:
 
 
-Module contents
----------------
+.. Module contents
+.. ---------------
 
-.. automodule:: gtnn.learn
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. .. automodule:: gtnn.learn
+..     :members:
+..     :undoc-members:
+..     :show-inheritance:

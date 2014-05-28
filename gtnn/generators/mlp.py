@@ -8,7 +8,7 @@ def mlp(sizes,
         weightGenerator=np.random.random,
         biasGenerator=np.random.random,
         activationFunction=LogSigmoid(-1, 1)):
-    r"""Geneerate Multilayer Perceptron (MLP) and return as a Net
+    r"""Generate Multilayer Perceptron (MLP) and return as a Net
 
     :param sizes: Size of each layer
     :type sizes: list of integers
@@ -16,10 +16,9 @@ def mlp(sizes,
     :param functor biasGenerator: Functor for generating bias values
     :param activationFunction: Activation function - the same for all neurons
     :type activationFunction: Activation function
+    :returns: Net object with the requested architecture
+    :rtype: :class:`~gtnn.network.Net`
 
-    :return Net object with the requested architecture
-    :rtype  net : :class:`~gtnn.network.Net`
-        
     """
     n = Net(sizes[0], sizes[-1])
     layerId = n.addVertexProperty("layerId", "short")

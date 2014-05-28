@@ -1,11 +1,8 @@
-gtnn.generators package
-=======================
+gtnn.generators
+===============
 
-Submodules
-----------
-
-gtnn.generators.mlp module
---------------------------
+gtnn.generators.mlp
+-------------------
 
 .. automodule:: gtnn.generators.mlp
     :members:
@@ -13,10 +10,10 @@ gtnn.generators.mlp module
     :show-inheritance:
 
 
-Module contents
----------------
+.. Module contents
+.. ---------------
 
-.. automodule:: gtnn.generators
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. .. automodule:: gtnn.generators
+..     :members:
+..     :undoc-members:
+..     :show-inheritance:

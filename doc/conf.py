@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Graph Tool Neural Networks documentation build configuration file, created by
-# sphinx-quickstart on Mon May 26 23:46:29 2014.
+# sphinx-quickstart on Tue May 27 00:04:28 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -18,7 +18,7 @@ import os
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0,"../")
 
 # -- General configuration ------------------------------------------------
 
@@ -102,6 +102,15 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 html_theme = 'default'
+import sphinx_rtd_theme
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+
+# sys.path.append(os.path.abspath('_themes'))
+# html_theme_path = ['_themes']
+# html_theme = 'kr'
+
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the

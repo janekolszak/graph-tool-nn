@@ -1,19 +1,16 @@
 gtnn package
 ============
 
-Subpackages
------------
-
 .. toctree::
 
+    gtnn.network
     gtnn.generators
     gtnn.learn
-    gtnn.network
 
-Module contents
----------------
+.. Module contents
+.. ---------------
 
-.. automodule:: gtnn
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. .. automodule:: gtnn
+..     :members:
+..     :undoc-members:
+..     :show-inheritance:

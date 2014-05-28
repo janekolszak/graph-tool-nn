@@ -1,19 +1,15 @@
-gtnn.network package
-====================
+gtnn.network
+============
 
-Submodules
-----------
-
-gtnn.network.activation module
-------------------------------
+gtnn.network.activation
+-----------------------
 
 .. automodule:: gtnn.network.activation
     :members:
-    :undoc-members:
     :show-inheritance:
 
-gtnn.network.net module
------------------------
+gtnn.network.net
+----------------
 
 .. automodule:: gtnn.network.net
     :members:
@@ -21,10 +17,10 @@ gtnn.network.net module
     :show-inheritance:
 
 
-Module contents
----------------
+.. Module contents
+.. ---------------
 
-.. automodule:: gtnn.network
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. .. automodule:: gtnn.network
+..     :members:
+..     :undoc-members:
+..     :show-inheritance:

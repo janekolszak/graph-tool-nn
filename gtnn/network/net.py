@@ -5,21 +5,24 @@ from gtnn.network.activation import LogSigmoid, Identity
 
 
 class Net(object):
-    __valueType = "long double"
+    """This is a wrapper for the graph_tool.Graph object. 
+    One can register vertex/edge properties and use them in algorithm implementation.
+    It also implements basic forward and backward operations.
+    """
 
     def __init__(self,  nInput, nOutput, graph=gt.Graph()):
         self.g = gt.Graph(graph)
         self.nInput = nInput
         self.nOutput = nOutput
         self.properties = dict()
-        self.biasProp = self.addVertexProperty("bias", Net.__valueType)
-        self.valueProp = self.addVertexProperty("value", Net.__valueType)
-        self.sumProp = self.addVertexProperty("sum", Net.__valueType)
+        self.biasProp = self.addVertexProperty("bias", "long double")
+        self.valueProp = self.addVertexProperty("value", "long double")
+        self.sumProp = self.addVertexProperty("sum", "long double")
         self.activation = self.addVertexProperty(
             "activation", "python::object")
-        self.errorProp = self.addVertexProperty("errorProp", Net.__valueType)
+        self.errorProp = self.addVertexProperty("errorProp", "long double")
 
-        self.weightProp = self.addEdgeProperty("weight", Net.__valueType)
+        self.weightProp = self.addEdgeProperty("weight", "long double")
 
         self.prepare()
 
