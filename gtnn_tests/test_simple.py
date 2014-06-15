@@ -4,7 +4,7 @@ from numpy.testing import assert_allclose
 import numpy as np
 
 from gtnn.generators.mlp import mlp
-from gtnn.learn.simple import train
+from gtnn.learn.simple import train, miniBatchTrain, batchTrain
 from gtnn.network.activation import LogSigmoid
 
 
@@ -30,11 +30,46 @@ class TestSimple(unittest.TestCase):
                 biasGenerator=np.random.random,
                 activationFunction=LogSigmoid(0, 1))
 
-        train(net=n, inputs=inp, outputs=out,
-              numEpochs=100, learningRate=0.7)
+        train(net=n,
+              inputs=inp,
+              outputs=out,
+              numEpochs=100,
+              learningRate=0.7)
 
         assert_allclose([n.forward(i) for i in inp], out, atol=0.1)
 
+    def test_miniBatchSimpleFork(self):
+        inp = [[1]]
+        out = [[0.44, 0.77, 0.33]]
+        n = mlp(sizes=[len(inp[0]), len(out[0])],
+                weightGenerator=np.random.random,
+                biasGenerator=np.random.random,
+                activationFunction=LogSigmoid(0, 1))
+
+        miniBatchTrain(net=n,
+                       inputs=inp,
+                       outputs=out,
+                       numEpochs=100,
+                       learningRate=0.7,
+                       batchSize=2)
+
+        assert_allclose([n.forward(i) for i in inp], out, atol=0.1)
+
+    def test_batchSimpleFork(self):
+        inp = [[1]]
+        out = [[0.44, 0.77, 0.33]]
+        n = mlp(sizes=[len(inp[0]), len(out[0])],
+                weightGenerator=np.random.random,
+                biasGenerator=np.random.random,
+                activationFunction=LogSigmoid(0, 1))
+
+        batchTrain(net=n,
+                   inputs=inp,
+                   outputs=out,
+                   numEpochs=100,
+                   learningRate=0.7)
+
+        assert_allclose([n.forward(i) for i in inp], out, atol=0.1)
 
     # def test_xor(self):
     #     inp = [[0, 0], [1, 0], [0, 1], [1, 1]]
