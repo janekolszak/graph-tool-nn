@@ -6,7 +6,11 @@ library with C++ bindings, uses boost::graph under the hood and seems to be pret
 (http://graph-tool.skewed.de/).
 
 **Graph-tool Neural Networks** is an implementation of ANN *on top of graph-tool*. It makes
-researching neural networks nice&easy. You can create custom nets, train, analyze and plot them.
+researching neural networks nice&easy. You can create custom nets, train them in many ways, analyze and plot them.
+
+Documentation
+=============
+Full documentation is available here: http://janekolszak.github.io/graph-tool-nn 
 
 Installation
 ============
@@ -38,6 +42,7 @@ n = mlp(sizes=[2, 2, 1],
         biasGenerator=np.random.random,
         activationFunction=LogSigmoid(0, 1))
 
+ # miniBatchTrain, batchTrain also available
 train(net=n, 
       inputs=inp, 
       outputs=out,
