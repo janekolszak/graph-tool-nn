@@ -1,11 +1,12 @@
 import graph_tool.all as gt
 import numpy as np
 
-from gtnn.network.activation import LogSigmoid, Identity
+from gtnn.network.activation import Identity
 
 
 class Net(object):
-    """This is a wrapper for the graph_tool.Graph object. 
+
+    """This is a wrapper for the graph_tool.Graph object.
     One can register vertex/edge properties and use them in algorithm implementation.
     It also implements basic forward and backward operations.
     """
@@ -18,10 +19,8 @@ class Net(object):
         self.biasProp = self.addVertexProperty("bias", "long double")
         self.valueProp = self.addVertexProperty("value", "long double")
         self.sumProp = self.addVertexProperty("sum", "long double")
-        self.activation = self.addVertexProperty(
-            "activation", "python::object")
+        self.activation = self.addVertexProperty("activation", "python::object")
         self.errorProp = self.addVertexProperty("errorProp", "long double")
-
         self.weightProp = self.addEdgeProperty("weight", "long double")
 
         self.prepare()

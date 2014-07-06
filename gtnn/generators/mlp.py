@@ -27,8 +27,10 @@ def mlp(sizes,
 
     # Create all layers
     for layerIdx, size in enumerate(sizes):
+        layerProp = n.addLayer()  # TODO: test layer
         for i in range(size):
             v = n.g.add_vertex()
+            layerProp[v] = True
             layerId[v] = layerIdx
             n.activation[v] = activationFunction
             n.biasProp[v] = biasGenerator()
@@ -41,5 +43,6 @@ def mlp(sizes,
         lastLayer = list(presentLayer)
         presentLayer = list()
 
+    # Create a subgraph
     n.prepare()
     return n
