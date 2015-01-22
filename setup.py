@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='graph-tool-nn',
-    version='1.0.2',
+    version='1.1.0',
     packages=['gtnn', 'gtnn.generators', 'gtnn.learn', 'gtnn.network'],
     license='GNU General Public License v3 (GPLv3)',
     long_description=r'''Graph-tool is a great open source tool for creating, using and analyzing graphs. It's a python
